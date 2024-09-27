@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
+import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -8,6 +9,7 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
       return res.status(400).json({
         success: false,
