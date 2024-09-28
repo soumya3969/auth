@@ -4,6 +4,7 @@ complete authorization and authentication in MERN
 
 ## FOLDER STRUCTURE:
 
+```
 AUTH /
 ├── backend/
 │ ├── controllers/
@@ -24,5 +25,6 @@ AUTH /
 ├── frontend
 ├── [.env]
 ├── [.gitignore]
-├── [pakage.json]
+├── [package.json]
 └── [readme.md]
+```
