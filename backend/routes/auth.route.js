@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/check-auth", verifyToken, checkAuth); //! work on later stopped at 1.47.00
+// router.get("/check-auth", verifyToken, checkAuth); //! work on later stopped at 1.47.00
 
 router.post("/signup", signup);
 router.post("/login", login);
