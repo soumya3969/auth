@@ -30,11 +30,11 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
       verificationToken,
-      verificationTokenExpiresAt: new Date(Date.now() + 15 * 60 * 1000)
+      verificationTokenExpiresAt: new Date(Date.now() + 15 * 60 * 1000) //* OTP expires in 15 minutes....
     });
     await user.save();
 
-    // jwt
+    // *jwt
     generateTokenAndSetCookie(res, user._id);
 
     await sendVerificationEmail(user.email, verificationToken);
