@@ -12,7 +12,7 @@ import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/check-auth", verifyToken, checkAuth); //! work on later stopped at 1.47.00
+router.get("/check-auth", verifyToken, checkAuth); //* Checks if user is authenticated
 
 router.post("/signup", signup);
 router.post("/login", login);

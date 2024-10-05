@@ -15,7 +15,7 @@ export const verifyToken = (req, res, next) => {
 
     next();
   } catch (error) {
-    console.log("errror in verifyToken", error);
+    console.log("error in verifyToken", error);
     return res.status(500).json({ message: "server error" });
   }
 };
