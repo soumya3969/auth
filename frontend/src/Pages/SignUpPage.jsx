@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import Input from "./../components/Input";
-import { CircleUserRound, LockKeyhole, Mail } from "lucide-react";
+import {
+  CircleUserRound,
+  ExternalLink,
+  Fingerprint,
+  LockKeyhole,
+  Mail,
+  UserCheck
+} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter";
@@ -23,7 +30,10 @@ const SignUpPage = () => {
     >
       <div className="p-8">
         <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
-          Create Account
+          <span>
+            <Fingerprint className="size-7 text-green-400 inline-block animate-pulse" />{" "}
+            Create Account{" "}
+          </span>
         </h2>
         <form onSubmit={handleSignUp}>
           <Input
@@ -58,7 +68,10 @@ const SignUpPage = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
           >
-            Sign Up
+            <span className="w-6 h-5">
+              Sign Up{" "}
+              <UserCheck className="w-6 h-5 inline-block animate-pulse" />
+            </span>
           </motion.button>
         </form>
       </div>
@@ -69,7 +82,10 @@ const SignUpPage = () => {
             to="/login"
             className="text-green-400 font-bold hover:underline"
           >
-            Log In
+            <span>
+              {" "}
+              Log In <ExternalLink className="inline-block size-4" />
+            </span>
           </Link>
         </p>
       </div>
