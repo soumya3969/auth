@@ -69,7 +69,9 @@ const SignUpPage = () => {
           />
 
           {/* =======error message======*/}
-          {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
+          {error && typeof error === "string" && (
+            <p className="text-red-500 font-semibold mt-2">{error}</p>
+          )}
           {/* ======Password strength indicator===== */}
 
           <PasswordStrengthMeter password={password} />
