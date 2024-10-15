@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import FLoatingShape from "./components/FloatingShape";
 import SignUpPage from "./Pages/SignUpPage";
 import LogInPage from "./Pages/LogInPage";
+import EmailVerificationPage from "./Pages/EmailVerificationPage";
 
 function App() {
   return (
@@ -21,10 +22,10 @@ function App() {
         delay={5}
       />
       <FLoatingShape
-        color="bg-green-500"
+        color="bg-green-300"
         size="w-32 h-32"
-        top="5%"
-        left="40%"
+        top="40%"
+        left="0%"
         delay={3}
       />
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={"Home"} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LogInPage />} />
+        <Route path="/verify-email" element={<EmailVerificationPage />} />
       </Routes>
     </div>
   );
