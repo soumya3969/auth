@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MailCheck } from "lucide-react";
+import { useAuthStore } from "../store/authStore";
+import toast from "react-hot-toast";
 
 const EmailVerificationPage = () => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
-  const isLoading = false;
+
+  const { verifyEmail, isLoading, error } = useAuthStore();
 
   const handleChange = (index, value) => {
     const newCode = [...code];
@@ -40,10 +43,16 @@ const EmailVerificationPage = () => {
       inputRefs.current[index - 1].focus();
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const verificationCode = code.join("");
-    console.log(`Verification code submitted: ${verificationCode}`);
+    try {
+      await verifyEmail(verificationCode);
+      navigate("/");
+      toast.success("Email verified successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // *auto Submit button enabled when 6 digit code is entered
@@ -86,6 +95,7 @@ const EmailVerificationPage = () => {
               />
             ))}
           </div>
+          {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -93,7 +103,7 @@ const EmailVerificationPage = () => {
             disabled={isLoading || code.some((digit) => !digit)}
             className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-emerald-500 hover:to-green-400 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-opacity-50 "
           >
-            Verify Email
+            {isLoading ? "Verifying..." : "Verify Email"}
           </motion.button>
         </form>
       </motion.div>
