@@ -112,6 +112,8 @@ function App() {
             </RedirectAuthenticatedUsers>
           }
         />
+        <Route path="*" element={<Navigate to="/" />} />{" "}
+        {/* // !404 Page redirect to home page */}
       </Routes>
       <Toaster />
     </div>
