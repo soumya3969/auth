@@ -10,6 +10,7 @@ import LogInPage from "./Pages/LogInPage";
 import EmailVerificationPage from "./Pages/EmailVerificationPage";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
+import ResetPasswordPage from "./Pages/ResetPasswordPage";
 
 // * ==== Protect routes That requires Authentication
 
@@ -100,6 +101,14 @@ function App() {
           element={
             <RedirectAuthenticatedUsers>
               <ForgotPasswordPage />
+            </RedirectAuthenticatedUsers>
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            <RedirectAuthenticatedUsers>
+              <ResetPasswordPage />
             </RedirectAuthenticatedUsers>
           }
         />
